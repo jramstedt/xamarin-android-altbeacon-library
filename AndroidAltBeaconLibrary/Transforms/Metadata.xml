@@ -30,7 +30,7 @@
 	<remove-node path="/api/package[@name='org.altbeacon.beacon']/class[@name='BeaconManager']/field[@name='rssiFilterImplClass']" />
 	<remove-node path="/api/package[@name='org.altbeacon.beacon.simulator']/class[@name='StaticBeaconSimulator']/field[@name='beacons']" />
 	<remove-node path="/api/package[@name='org.altbeacon.beacon']/class[@name='BeaconParser']/field[@name='mServiceUuidStartOffset']" />
-	
+
 	<!--- Hides inherited member -->
 	<remove-node path="/api/package[@name='org.altbeacon.beacon']/class[@name='AltBeacon']/field[@name='CREATOR']"/>
 	<remove-node path="/api/package[@name='org.altbeacon.beacon']/class[@name='Region']/method[@name='clone' and count(parameter)=0]" />
@@ -40,12 +40,6 @@
 	<!---Rename method that doesn't override the abstract. Create new partial class that does. -->
 	<attr path="/api/package[@name='org.altbeacon.beacon.distance']/class[@name='ModelSpecificDistanceUpdater']/method[@name='doInBackground' and count(parameter)=1 and parameter[1][@type='java.lang.Void...']]" name="managedName">_DoInBackground</attr>
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Identifier']/method[@name='compareTo' and count(parameter)=1 and parameter[1][@type='org.altbeacon.beacon.Identifier']]" name="managedName">_CompareTo</attr>
-	
-	<!-- IBeaconConsumer -->
-	<attr path="/api/package[@name='org.altbeacon.beacon']/interface[@name='BeaconConsumer']/method[@name='bindService' and count(parameter)=3 and parameter[1][@type='android.content.Intent'] and parameter[2][@type='android.content.ServiceConnection'] and parameter[3][@type='int']]/parameter[@name='p0']" name="name">intent</attr>
-	<attr path="/api/package[@name='org.altbeacon.beacon']/interface[@name='BeaconConsumer']/method[@name='bindService' and count(parameter)=3 and parameter[1][@type='android.content.Intent'] and parameter[2][@type='android.content.ServiceConnection'] and parameter[3][@type='int']]/parameter[@name='p1']" name="name">serviceConnection</attr>
-	<attr path="/api/package[@name='org.altbeacon.beacon']/interface[@name='BeaconConsumer']/method[@name='bindService' and count(parameter)=3 and parameter[1][@type='android.content.Intent'] and parameter[2][@type='android.content.ServiceConnection'] and parameter[3][@type='int']]/parameter[@name='p2']" name="name">flags</attr>
-	<attr path="/api/package[@name='org.altbeacon.beacon']/interface[@name='BeaconConsumer']/method[@name='unbindService' and count(parameter)=1 and parameter[1][@type='android.content.ServiceConnection']]/parameter[@name='p0']" name="name">serviceConnection</attr>
 	
 	<!---IMonitorNotifier -->
 	<attr path="/api/package[@name='org.altbeacon.beacon']/interface[@name='MonitorNotifier']/method[@name='didDetermineStateForRegion' and count(parameter)=2 and parameter[1][@type='int'] and parameter[2][@type='org.altbeacon.beacon.Region']]/parameter[@name='p0']" name="name">state</attr>
@@ -104,11 +98,8 @@
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='mParserIdentifier']" name="managedName">ParserIdentifier</attr>
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='mServiceUuid']" name="managedName">ServiceUuid</attr>
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='sDistanceCalculator']" name="managedName">DistanceCalculator</attr>
-	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='sHardwareEqualityEnforced']" name="managedName">HardwareEqualityEnforced</attr>
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='mIdentifiers']" name="managedName">Identifiers</attr>
 	
-	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Region']/field[@name='mIdentifiers']" name="visibility">public</attr>
-	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Region']/field[@name='mIdentifiers']" name="managedName">Identifiers</attr>
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='mTxPower']" name="visibility">public</attr>
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='mRssi']" name="visibility">public</attr>
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='mBeaconTypeCode']" name="visibility">public</attr>
@@ -120,8 +111,9 @@
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='mParserIdentifier']" name="visibility">public</attr>
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='mServiceUuid']" name="visibility">public</attr>
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='sDistanceCalculator']" name="visibility">public</attr>
-	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='sHardwareEqualityEnforced']" name="visibility">public</attr>
 	<attr path="/api/package[@name='org.altbeacon.beacon']/class[@name='Beacon']/field[@name='mIdentifiers']" name="visibility">public</attr>
 	<attr path="/api/package[@name='org.altbeacon.beacon.service.scanner']/class[@name='ScanFilterUtils.ScanFilterData']" name="visibility">public</attr>
 
+	<!-- Nodes added for 2.19.2 -->
+	<remove-node path="/api/package[@name='org.altbeacon.beacon.service']/class[@name='IntentScanStrategyCoordinator']/field[@name='Companion']" />
 </metadata>
